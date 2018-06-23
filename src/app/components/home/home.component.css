@@ -1,0 +1,10 @@
+.card-columns{
+    column-count: 1;
+}
+
+.search-btn{
+    top: 77px;
+    width: 33%;
+    right: 35px;
+    position: absolute;
+}
