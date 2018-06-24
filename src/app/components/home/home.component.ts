@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
      * Search repository by name
      */
     searchRepo() {
-        console.log(this.searchForm.value.searchElement);
         this.repoService.searchRepo(this.searchForm.value.searchElement)
             .subscribe((data: any) => {
                 this.searchResult = data.items;
@@ -41,5 +40,4 @@ export class HomeComponent implements OnInit {
         this.detailsData = item;
         console.log(this.detailsData);
     }
-
 }

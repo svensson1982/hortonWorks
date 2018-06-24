@@ -2,6 +2,10 @@
     column-count: 1;
 }
 
+#search-field{
+    width: 100% !important;
+}
+
 .search-btn{
     top: 77px;
     width: 33%;

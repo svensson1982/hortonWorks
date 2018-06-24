@@ -1,0 +1,35 @@
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a routerLink="/">issues</a>
+            </li>
+        </ol>
+        <!-- Card -->
+        <div class="card mb-3" *ngIf="issues.length > 0">
+            <div class="card-columns">
+                <div class="card" *ngFor="let item of issues; let even = even;" [ngClass]="{'even' : even }">
+                    <img class="card-img-top" src="{{item.user.avatar_url}}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.title}}</h5>
+                        <p class="card-text">{{item.body}}</p>
+                        <p class="card-text"><a href="{{item.html_url}}" class="btn btn-info">Issue URL</a></p>
+                        <p class="card-text">
+                            <small class="text-muted">State: {{item.state}}</small>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted"> comments: {{item.comments}}</small>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">Created at: {{item.created_at | date:'fullDate'}}</small>
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">Last updated: {{item.updated_at | date:'fullDate'}}</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
