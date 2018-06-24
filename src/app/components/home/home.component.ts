@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-import { RepoService } from '../../services/repo.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { Chart } from 'angular-highcharts';
+import { RepoService } from '../../services/repo.service';
 
 @Component({
     selector: 'app-home',
@@ -9,9 +10,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    detailsData: any = {};
+    chart: any;
     searchResult = [];
+    detailsData: any = {};
     searchForm: FormGroup;
+    visibleChart: boolean;
 
     constructor(private repoService: RepoService) {
     }
@@ -37,7 +40,46 @@ export class HomeComponent implements OnInit {
      * @param item
      */
     addData(item: any) {
+        this.visibleChart = false;
         this.detailsData = item;
-        console.log(this.detailsData);
+    }
+
+    /**
+     * highChart
+     */
+    showChart(repoData) {
+        this.visibleChart = true;
+        this.chart = new Chart({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: repoData.full_name + ' chart'
+            },
+            credits: {
+                enabled: false
+            },
+            series: [
+                {
+                    name: 'Forks',
+                    data: [repoData.forks]
+                }, {
+                    name: 'Open issues',
+                    data: [repoData.open_issues]
+                }, {
+                    name: 'Stargazers',
+                    data: [repoData.stargazers_count]
+                }, {
+                    name: 'Watchers',
+                    data: [repoData.watchers_count]
+                }, {
+                    name: 'Score',
+                    data: [repoData.score]
+                }, {
+                    name: 'Size',
+                    data: [repoData.size]
+                }
+            ]
+        });
     }
 }
