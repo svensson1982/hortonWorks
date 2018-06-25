@@ -1,3 +1,10 @@
 .even{
     background: rgba(48, 186, 143, .75);
 }
+
+.back-btn{
+    top: 77px;
+    width: 33%;
+    right: 35px;
+    position: absolute;
+}

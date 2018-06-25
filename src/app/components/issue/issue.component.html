@@ -5,6 +5,11 @@
             <li class="breadcrumb-item">
                 <a routerLink="/">issues</a>
             </li>
+            <li class="back-btn">
+                <button class="btn btn-info float-right" (click)="backClicked()">
+                    <i class="fa fa-angle-left" aria-hidden="true"></i> Back
+                </button>
+            </li>
         </ol>
         <!-- Card -->
         <div class="card mb-3" *ngIf="issues.length > 0">
