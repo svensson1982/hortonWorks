@@ -19,12 +19,10 @@ export class IssueComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.route.params.subscribe((params) => {
-            this.repoService.searchIssue(params.name)
-                .subscribe((data: any) => {
-                    this.issues = data.items;
-                });
-        });
+        this.route.data
+            .subscribe((data: any) => {
+                this.issues = data.issueData.items;
+            });
     }
 
     /**
